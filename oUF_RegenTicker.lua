@@ -242,7 +242,8 @@ local stealthIDs = {
 	[6783] = true, -- prowl r2
 	[9913] = true, -- prowl r3
 }
-function UpdateAura()
+
+local function UpdateAura()
 	local i = 1
 	while UnitBuff("player",i) do
 		if stealthIDs[select(10,UnitBuff("player",i))] then
