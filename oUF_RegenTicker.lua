@@ -50,6 +50,7 @@ local myClass = select(2, UnitClass("player"))
 local Mp5Delay = 5
 local Mp5DelayWillEnd = nil
 local Mp5IgnoredSpells = {
+	[27222] = true, -- life tap 7
 	[11689] = true, -- life tap 6
 	[11688] = true, -- life tap 5
 	[11687] = true, -- life tap 4
@@ -190,7 +191,7 @@ local OnUnitSpellcastSucceeded = function(_, _, _, _, spellID)
 	local spellCost = false
 	local costTable = GetSpellPowerCost(spellID)
 	for _, costInfo in next, costTable do
-		if costInfo.cost then
+		if costInfo.cost and costInfo.cost > 0 then
 			spellCost = true
 		end
 	end
